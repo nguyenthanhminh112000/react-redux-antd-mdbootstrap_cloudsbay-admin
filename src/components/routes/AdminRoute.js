@@ -1,31 +1,21 @@
-import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route } from 'react-router-dom';
 import LoadingToRedirect from './LoadingToRedirect';
-import { checkAdmin } from './../../api/auth';
-console.log('Admin outside');
+console.log('AdminRoute outside');
 const AdminRoute = (props) => {
-  // using hooks
-  const [isAdmin, setIsAdmin] = useState(false);
+  console.log('AdminRoute inside');
   const { user } = useSelector((state) => state);
-
-  useEffect(() => {
-    console.log('AdminRoute inside useEffect');
-    const handleCheckAdmin = async () => {
-      try {
-        if (user) {
-          console.log('handleCheckAdmin');
-          await checkAdmin(user.token);
-          setIsAdmin(true);
-        }
-      } catch (error) {
-        setIsAdmin(false);
-      }
-    };
-    handleCheckAdmin();
-  }, [user]);
-
-  return isAdmin && user ? <Route {...props} /> : <LoadingToRedirect />;
+  return user ? (
+    <>
+      {console.log('AdminRoute inside return')}
+      <Route {...props} />
+    </>
+  ) : (
+    <>
+      {console.log('AdminRoute inside return')}
+      <LoadingToRedirect />
+    </>
+  );
 };
 
 export default AdminRoute;

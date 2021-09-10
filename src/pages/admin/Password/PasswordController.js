@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import UserNav from './../../components/nav/UserNav';
-import { auth } from './../../firebase';
+
+import { auth } from '../../../firebase';
 import { toast } from 'react-toastify';
-console.log('Password outside');
-const Password = () => {
+const PasswordController = () => {
   //using hooks
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState('');
@@ -25,6 +24,9 @@ const Password = () => {
       toast.error(`${error.message}`);
     }
   };
+
+  console.log('Password inside');
+
   const passwordUpdateForm = () => {
     return (
       <form onSubmit={handleUpdatePassword}>
@@ -49,26 +51,17 @@ const Password = () => {
       </form>
     );
   };
-  console.log('Password inside');
-  return (
-    <div className='container-fluid'>
-      <div className='row'>
-        <div className='col-md-2'>
-          <UserNav />
-        </div>
 
-        <div className='col'>
-          {loading ? (
-            <h4 className='text-danger'>Loading...</h4>
-          ) : (
-            <h4>Update Password</h4>
-          )}
-          {passwordUpdateForm()}
-        </div>
-        {console.log('Password inside return')}
-      </div>
-    </div>
+  return (
+    <>
+      {loading ? (
+        <h4 className='text-danger'>Loading...</h4>
+      ) : (
+        <h4>Update Password</h4>
+      )}
+      {passwordUpdateForm()}
+    </>
   );
 };
 
-export default Password;
+export default PasswordController;

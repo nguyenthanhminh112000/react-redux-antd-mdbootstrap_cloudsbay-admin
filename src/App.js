@@ -4,20 +4,18 @@ import { auth } from './firebase';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import Header from './components/nav/Header';
 import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import Home from './pages/Home';
-import RegisterComplete from './pages/auth/RegisterComplete';
-import History from './pages/user/History';
-import Password from './pages/user/Password';
-import Wishlist from './pages/user/Wishlist';
-import UserRoute from './components/routes/UserRoute';
 import AdminRoute from './components/routes/AdminRoute';
 import GuestRoute from './components/routes/GuestRoute';
-import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminDashboard from './pages/admin/Dashboard/Dashboard';
+import Password from './pages/admin/Password/Password';
+import Category from './pages/admin/Category/Category';
+import Coupons from './pages/admin/Coupons/Coupons';
+import Product from './pages/admin/Product/Product';
+import Products from './pages/admin/Products/Products';
+import SubCategory from './pages/admin/SubCategory/SubCategory';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authObserver } from './actions/auth';
-import ForgotPassword from './pages/auth/ForgotPassword';
 console.log('App outside');
 const App = () => {
   //hooks
@@ -41,20 +39,15 @@ const App = () => {
       <ToastContainer />
       <Header />
       <Switch>
-        {console.log('App inside return')}
         <GuestRoute path='/login' exact component={Login} />
-        <GuestRoute path='/register' exact component={Register} />
-        <GuestRoute
-          path='/register/complete'
-          exact
-          component={RegisterComplete}
-        />
-        <GuestRoute path='/forgot/password' exact component={ForgotPassword} />
-        <UserRoute path='/user/history' exact component={History} />
-        <UserRoute path='/user/password' exact component={Password} />
-        <UserRoute path='/user/wishlist' exact component={Wishlist} />
-        <AdminRoute path='/admin/dashboard' exact component={AdminDashboard} />
-        <Route path='/' component={Home} />
+        {console.log('App inside return')}
+        <AdminRoute path='/admin/password' component={Password} />
+        <AdminRoute path='/admin/coupons' component={Coupons} />
+        <AdminRoute path='/admin/product' component={Product} />
+        <AdminRoute path='/admin/products' component={Products} />
+        <AdminRoute path='/admin/sub' component={SubCategory} />
+        <AdminRoute path='/admin/category' component={Category} />
+        <AdminRoute path='/' component={AdminDashboard} />
       </Switch>
     </>
   );

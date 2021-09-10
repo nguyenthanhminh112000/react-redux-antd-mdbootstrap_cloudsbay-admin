@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import { GoogleOutlined, MailOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 console.log('Login outside');
-const Login = ({ history }) => {
+const Login = () => {
   console.log('Login inside');
   // hooks
   const [email, setEmail] = useState('');
@@ -20,8 +20,8 @@ const Login = ({ history }) => {
     try {
       console.log('handleSubmit');
       await auth.signInWithEmailAndPassword(email, password);
-      history.push('/');
       console.log('handleSubmit end');
+      setLoading(false);
     } catch (error) {
       setLoading(false);
       console.error(error);
@@ -34,7 +34,6 @@ const Login = ({ history }) => {
     try {
       console.log('google login');
       const result = await auth.signInWithPopup(googleAuthProvider);
-      history.push('/');
       console.log('google login end');
       console.log(result);
     } catch (error) {
@@ -65,7 +64,7 @@ const Login = ({ history }) => {
           required
           value={email}
           onChange={handleChange}
-          placeholder='Your email'
+          placeholder='Your Admin Email'
           style={{ marginBottom: '5px' }}
           id='email'
         />
@@ -78,7 +77,7 @@ const Login = ({ history }) => {
           required
           value={password}
           onChange={handleChange}
-          placeholder='Your password'
+          placeholder='Your Admin Password'
           style={{ marginBottom: '5px' }}
           id='password'
         />
@@ -103,9 +102,9 @@ const Login = ({ history }) => {
       <div className='row'>
         <div className='col-md-6 offset-md-3'>
           {!loading ? (
-            <h4>Login</h4>
+            <h4 style={{ textAlign: 'center' }}>Admin Login</h4>
           ) : (
-            <h4 style={{ color: 'red' }}>Loading...</h4>
+            <h4 style={{ color: 'red', textAlign: 'center' }}>Loading...</h4>
           )}
 
           {loginForm()}
@@ -119,17 +118,7 @@ const Login = ({ history }) => {
           >
             Login with Google
           </Button>
-          <Link
-            className='text-danger'
-            to='/forgot/password'
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              marginTop: '5px',
-            }}
-          >
-            Forgot Password
-          </Link>
+          <Link to='/login'>Login</Link>
         </div>
       </div>
     </div>

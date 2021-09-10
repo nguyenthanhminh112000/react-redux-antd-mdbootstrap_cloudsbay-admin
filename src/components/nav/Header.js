@@ -6,7 +6,6 @@ import { Menu } from 'antd';
 import {
   AppstoreOutlined,
   SettingOutlined,
-  UserAddOutlined,
   UserOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
@@ -33,6 +32,7 @@ const Header = () => {
         zIndex: '9',
       }}
     >
+      {console.log('Header inside return')}
       <nav>
         <Menu
           onClick={handleClick}
@@ -40,9 +40,8 @@ const Header = () => {
           mode='horizontal'
           style={{ display: 'flex' }}
         >
-          {console.log('Header inside return')}
           <Item key='home' icon={<AppstoreOutlined />}>
-            <Link to='/'>Home</Link>
+            <Link to='/'>Admin Dashboard</Link>
           </Item>
         </Menu>
       </nav>
@@ -59,18 +58,12 @@ const Header = () => {
               icon={<SettingOutlined />}
               title={user ? user.email.split('@')[0] : 'Username'}
             >
-              {user.role === 'admin' ? (
-                <Item key='admin-dashboard'>
-                  <Link to='/admin/dashboard'>Dashboard</Link>
-                </Item>
-              ) : (
-                <Item key='user-dashboard'>
-                  <Link to='/user/history'>Dashboard</Link>
-                </Item>
-              )}
+              <Item key='admin-dashboard'>
+                <Link to='/admin/dashboard'>Dashboard</Link>
+              </Item>
 
               <Item
-                key='setting:3'
+                key='logout'
                 icon={<LogoutOutlined />}
                 onClick={handleLogout}
               >
@@ -80,10 +73,7 @@ const Header = () => {
           ) : (
             <>
               <Item key='login' icon={<UserOutlined />}>
-                <Link to='/login'> Login</Link>
-              </Item>
-              <Item key='register' icon={<UserAddOutlined />}>
-                <Link to='/register'> Register</Link>
+                <Link to='/login'>Admin Login</Link>
               </Item>
             </>
           )}
