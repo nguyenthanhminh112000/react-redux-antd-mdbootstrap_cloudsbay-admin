@@ -41,12 +41,12 @@ const App = () => {
       <Switch>
         <GuestRoute path='/login' exact component={Login} />
         {console.log('App inside return')}
-        <AdminRoute path='/admin/password' component={Password} />
-        <AdminRoute path='/admin/coupons' component={Coupons} />
-        <AdminRoute path='/admin/product' component={Product} />
-        <AdminRoute path='/admin/products' component={Products} />
-        <AdminRoute path='/admin/sub' component={SubCategory} />
-        <AdminRoute path='/admin/category' component={Category} />
+        <AdminRoute path='/admin/password' exact component={Password} />
+        <AdminRoute path='/admin/coupons' exact component={Coupons} />
+        <AdminRoute path='/admin/product' exact component={Product} />
+        <AdminRoute path='/admin/products' exact component={Products} />
+        <AdminRoute path='/admin/sub' exact component={SubCategory} />
+        <AdminRoute path='/admin/category' exact component={Category} />
         <AdminRoute path='/' component={AdminDashboard} />
       </Switch>
     </>

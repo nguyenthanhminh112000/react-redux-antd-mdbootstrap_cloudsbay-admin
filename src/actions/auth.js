@@ -9,12 +9,10 @@ export const authObserver = (user, history) => async (dispatch) => {
       const { token } = await user.getIdTokenResult();
       const { data: admin } = await checkAdmin(token);
       console.log(admin);
-      console.log('----------------------------1');
       dispatch({
         type: LOG_IN,
         payload: { ...admin, token },
       });
-      console.log('----------------------------2');
       toast.success('Login Successfully as Admin.');
       history.push('/');
     } else {
