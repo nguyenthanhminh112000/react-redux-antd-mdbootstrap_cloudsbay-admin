@@ -46,13 +46,13 @@ const App = () => {
         <AdminRoute path='/admin/coupons' exact component={Coupons} />
         <AdminRoute path='/admin/product' exact component={Product} />
         <AdminRoute path='/admin/products' exact component={Products} />
-        <AdminRoute path='/admin/sub' exact component={SubCategory} />
         <AdminRoute path='/admin/category' exact component={Category} />
         <AdminRoute
           path='/admin/category/:slug'
           exact
           component={CategoryUpdate}
         />
+        <AdminRoute path='/admin/sub' exact component={SubCategory} />
         <AdminRoute path='/' component={AdminDashboard} />
       </Switch>
     </>
