@@ -81,7 +81,12 @@ const CategoryController = () => {
             onChange={handleChange}
           />
           <br />
-          <button className='btn btn-outline-primary'>Save</button>
+          <button
+            className='btn btn-outline-primary'
+            disabled={!(category.length >= 3 && category.length <= 32)}
+          >
+            Create
+          </button>
         </div>
       </form>
       {categories.map((c) => (

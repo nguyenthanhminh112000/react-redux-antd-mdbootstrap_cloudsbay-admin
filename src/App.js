@@ -13,6 +13,7 @@ import Coupons from './pages/admin/Coupons/Coupons';
 import Product from './pages/admin/Product/Product';
 import Products from './pages/admin/Products/Products';
 import SubCategory from './pages/admin/SubCategory/SubCategory';
+import CategoryUpdate from './pages/admin/CategoryUpdate/CategoryUpdate';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authObserver } from './actions/auth';
@@ -47,6 +48,11 @@ const App = () => {
         <AdminRoute path='/admin/products' exact component={Products} />
         <AdminRoute path='/admin/sub' exact component={SubCategory} />
         <AdminRoute path='/admin/category' exact component={Category} />
+        <AdminRoute
+          path='/admin/category/:slug'
+          exact
+          component={CategoryUpdate}
+        />
         <AdminRoute path='/' component={AdminDashboard} />
       </Switch>
     </>
