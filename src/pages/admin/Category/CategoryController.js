@@ -13,6 +13,7 @@ const CategoryController = () => {
   console.log('CategoryController inside');
   // hooks
   const [category, setCategory] = useState('');
+  const [keyword, setKeyword] = useState('');
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const { user } = useSelector((state) => state);
@@ -21,8 +22,12 @@ const CategoryController = () => {
     loadCategories();
   }, []);
   // writing functions
+  const search = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
   const handleChange = (e) => {
     setCategory(e.target.value);
+  };
+  const handleChangeKeyword = (e) => {
+    setKeyword(e.target.value.toLowerCase());
   };
   const loadCategories = async () => {
     const { data: categories } = await getCategories();
@@ -89,7 +94,15 @@ const CategoryController = () => {
           </button>
         </div>
       </form>
-      {categories.map((c) => (
+
+      <input
+        type='text'
+        placeholder='Filter'
+        value={keyword}
+        onChange={handleChangeKeyword}
+        className='form-control mb-4'
+      />
+      {categories.filter(search(keyword)).map((c) => (
         <div className='alert alert-secondary' key={c._id}>
           {c.name}
 
