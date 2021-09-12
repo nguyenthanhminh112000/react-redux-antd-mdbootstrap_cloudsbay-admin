@@ -5,10 +5,10 @@ export const getSub = (slug) =>
 
 export const getSubs = () => API.get(`${process.env.REACT_APP_API}/subs`);
 
-export const createSub = (sub, authtoken) =>
+export const createSub = (name, parent, authtoken) =>
   API.post(
     `/sub`,
-    { name: sub },
+    { name: name, parent: parent },
     {
       headers: { authtoken },
     }
@@ -23,7 +23,7 @@ export const updateSub = (slug, sub, authtoken) =>
     }
   );
 
-export const deleteCategory = (slug, authtoken) =>
+export const deleteSub = (slug, authtoken) =>
   API.delete(`${process.env.REACT_APP_API}/sub/${slug}`, {
     headers: { authtoken },
   });
