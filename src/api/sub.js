@@ -15,13 +15,9 @@ export const createSub = (name, parent, authtoken) =>
   );
 
 export const updateSub = (slug, sub, authtoken) =>
-  API.put(
-    `${process.env.REACT_APP_API}/sub/${slug}`,
-    { name: sub },
-    {
-      headers: { authtoken },
-    }
-  );
+  API.put(`${process.env.REACT_APP_API}/sub/${slug}`, sub, {
+    headers: { authtoken },
+  });
 
 export const deleteSub = (slug, authtoken) =>
   API.delete(`${process.env.REACT_APP_API}/sub/${slug}`, {

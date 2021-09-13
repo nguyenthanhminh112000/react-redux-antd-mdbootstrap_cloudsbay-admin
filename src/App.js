@@ -8,12 +8,13 @@ import AdminRoute from './components/routes/AdminRoute';
 import GuestRoute from './components/routes/GuestRoute';
 import AdminDashboard from './pages/admin/Dashboard/Dashboard';
 import Password from './pages/admin/Password/Password';
-import Category from './pages/admin/Category/Category';
 import Coupons from './pages/admin/Coupons/Coupons';
 import Product from './pages/admin/Product/Product';
 import Products from './pages/admin/Products/Products';
-import SubCategory from './pages/admin/SubCategory/SubCategory';
+import Category from './pages/admin/Category/Category';
 import CategoryUpdate from './pages/admin/CategoryUpdate/CategoryUpdate';
+import SubCategory from './pages/admin/SubCategory/SubCategory';
+import SubCategoryUpdate from './pages/admin/SubCategoryUpdate/SubCategoryUpdate';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authObserver } from './actions/auth';
@@ -53,6 +54,11 @@ const App = () => {
           component={CategoryUpdate}
         />
         <AdminRoute path='/admin/sub' exact component={SubCategory} />
+        <AdminRoute
+          path='/admin/sub/:slug'
+          exact
+          component={SubCategoryUpdate}
+        />
         <AdminRoute path='/' component={AdminDashboard} />
       </Switch>
     </>
